@@ -123,6 +123,14 @@ public struct PagedArray<T> {
         self.elements[page] = elements
     }
     
+    /// Removes an Element at index
+    public mutating func removeElement(_ index:Index) {
+        let pageIndex = self.page(for:index)
+        let arrayIndex = index - (pageIndex * pageSize)
+        elements[pageIndex]?.remove(at: arrayIndex)
+        self.count -= 1
+    }
+    
     /// Removes the elements corresponding to the page, replacing them with `nil` values
     public mutating func remove(_ page: PageIndex) {
         elements[page] = nil
