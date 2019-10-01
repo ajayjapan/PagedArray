@@ -123,6 +123,14 @@ public struct PagedArray<T> {
         self.elements[page] = elements
     }
     
+    /// Insert an Element at index
+    public mutating func insertElement(_ index: Index, element: T) {
+        let pageIndex = self.page(for:index)
+        elements[pageIndex]?.insert(element, at: index)
+        self.count += 1
+        
+    }
+    
     /// Removes an Element at index
     public mutating func removeElement(_ index:Index) {
         let pageIndex = self.page(for:index)
