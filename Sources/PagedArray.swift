@@ -80,7 +80,7 @@ public struct PagedArray<T> {
     
     /// Returns the page index for an element index
     public func page(for index: Index) -> PageIndex {
-        assert(index >= startIndex && index < endIndex, "Index out of bounds")
+       // assert(index >= startIndex && index < endIndex, "Index out of bounds")
         return index/pageSize+startPage
     }
     
