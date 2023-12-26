@@ -80,8 +80,9 @@ public struct PagedArray<T> {
     
     /// Returns the page index for an element index
     public func page(for index: Index) -> PageIndex {
-        assert(index >= startIndex && index <= endIndex, "Index out of bounds")
-        return index/pageSize+startPage
+        var i = Swift.min(index, endIndex - 1)
+        i = Swift.max(i, startIndex)
+        return i/pageSize+startPage
     }
     
     /// Returns a `Range` corresponding to the indexes for a page
